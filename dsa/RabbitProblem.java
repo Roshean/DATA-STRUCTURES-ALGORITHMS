@@ -2,17 +2,27 @@ import java.util.Scanner;
 
 public class RabbitProblem {
 
-    public static int rabbits(int month) {
-        if (month == 1 || month == 2)
+    static int fibonacci(int n) {
+        if (n == 1 || n == 2)
             return 1;
-        return rabbits(month - 1) + rabbits(month - 2);
+
+        int a = 1, b = 1, c = 0;
+
+        for (int i = 3; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+
+        return c;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         System.out.print("Enter number of months: ");
         int n = sc.nextInt();
-
-        System.out.println("Number of rabbits after " + n + " months = " + rabbits(n));
+        
+        System.out.println("Rabbit pairs: " + fibonacci(n));
     }
 }
